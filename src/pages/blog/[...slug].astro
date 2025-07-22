@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CardNoticia from '../../components/CardNoticia.astro';
+import Slider from '../../components/Slider.astro';
+import { getPostInfo } from 'src/lib/wp';
+
+
+const {title, content} = await getPostInfo(Astro.params.slug)
+
+---
+
+<Layout>
+
+    <article>
+        <h1>
+            {title}
+        </h1>
+        <div class="text-xl max-w-2xl mwx-auto" >
+            <div class="text-center" set:html={content}>
+
+            </div>
+        </div>
+    </article>
+</Layout>

@@ -1,11 +1,90 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import CardNoticia from '../components/CardNoticia.astro';
+import Slider from '../components/Slider.astro';
+import { getLatesPosts, getPageInfo } from '../lib/wp';
+
+
+const {title, content} = await getPageInfo("bienvenido-a-escuela-de-colonia-alfalfares")
+const posts = await getLatesPosts({perPage:3})
+
 ---
 
-<Layout>
-	<Welcome />
+
+<Layout title="Escuela de Colonia Alfalfares" >
+	<Slider slot="header"></Slider>
+	<div  style="padding: 2% 10%;" >
+		<section id="noticias-blog-local">
+			<div style="text-align: justify;">
+				<h2>Últimas Noticias</h2>
+					<div class="noticias-grid text-2xl content-start" >
+						{posts.map((post) => <CardNoticia {...post}/>)}
+					</div>
+				<hr>
+			</div>
+			
+		</section>
+
+		<section>
+			<div style="text-align:justify;">
+				<h2>Que es la Educación para Nosotros</h2></div><hr>
+			<div class="size-p" >
+				<p>
+					El aprendizaje y desarrollo integral de los niños y niñas de la Escuela de Colonia
+					Alfalfares es un constante trabajo de enseñanza –aprendizaje que el establecimiento
+					educacional realiza junto a las familias y la comunidad, como parte del proceso de
+					mejora continua para lograr potenciar al máximo las capacidades de los educados y
+					garantizar el derecho inherente a todo niño y niña a una educación de calidad.
+				</p>
+
+			</div>
+		</section>
+
+		<div style="" class="slider-div">
+			<h3>Reseña Histórica: Conoce nuestro establecimiento</h3><hr>
+			<div class="slider">
+				<img src="/colegio-1.webp" class="" alt="Imagen Escuela de Colonia Alfalfares | escuela alfalfares 1">
+				<img src="/colegio-2.webp" class="" alt="Imagen Escuela de Colonia Alfalfares | escuela alfalfares 2">
+				<img src="/colegio-3.webp" class="" alt="Imagen Escuela de Colonia Alfalfares | escuela alfalfares 3">
+				<img src="/colegio-4.webp" class="" alt="Imagen Escuela de Colonia Alfalfares | escuela alfalfares 4">
+				<img src="/colegio-5.webp" class="" alt="Imagen Escuela de Colonia Alfalfares | escuela alfalfares 5">
+			</div>
+			<div class="size-p"><hr>
+				<p style="text-align: justify; column-count:2;">
+					Escuela de Colonia Alfalfares fue creada en Mayo de 1965, en un terreno
+					asignado por la repartición de la Reforma Agraria en el sector, siendo entonces una
+					pequeña infraestructura de material ligero. <br>
+					Desde sus inicios, se impartía educación de 1° a 6° año básico; ya en 1986 se
+					creó el 7° año básico, en 1987 el 8° año básico y en la actualidad se imparte educación
+					desde Pre kínder a Octavo Año Básico, con un sistema educativo inclusivo, con un
+					curso por nivel y la educación parvularia es impartida en curso combinado. <br>
+					Se cuenta con el recurso humano para atender a los alumnos, tales como:
+					Programa de Integración Escolar con recursos PIE, Biblioteca CRA y Recursos
+					financieros provenientes de la Subvención de Mantenimiento y Ley SEP. Lo cual
+					garantiza un proceso educativo y alienta a mantener altas expectativas en los avances
+					de los alumnos, para que sumen y cumplan sus aspiraciones de ser promovidos, y en
+					los casos de los alumnos de 8° año básico, ingresar a la Enseñanza Media y Superior. br
+					En el 2008, se construyó el moderno edificio de 3 pisos que en la actualidad
+					cobija a toda la comunidad Alfalfarina y el que ha sido receptor de la Certificación de
+					ser un colegio Preventivo, entonces desde el 2011 el colegio participa del Proyecto de
+					Prevención del consumo de Drogas y Alcohol de SENDA en conjunto con las
+					organizaciones comunitarias del sector de Alfalfares. 
+				</p>
+			</div>
+		</div>
+		<div style="text-align: center;">
+			<hr>
+			<h3>Ubicacion del establecimiento</h3>
+			<div class="flex items-center justify-center">
+				<div class="basis-80">
+					<div class="rounded-full">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3458.603380271685!2d-71.23427889999999!3d-29.9045269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691ca8f15c6190f%3A0xcaa62066ccf0e08d!2scolegio%20colonia%20alfalfares!5e0!3m2!1ses-419!2scl!4v1747062285854!5m2!1ses-419!2scl"  height="500px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </Layout>
+
+

@@ -1,0 +1,17 @@
+---
+import { getPageInfo } from "src/lib/wp"
+
+
+const {title} = await getPageInfo("bienvenido-a-escuela-de-colonia-alfalfares")
+
+---
+<div class="header-banner">
+    <div class="visibility"></div>
+    <div class="overlay">
+        <h1 class="text-overlay">{title}</h1>
+         <img src="/logo-colegio.png" alt="" />
+    </div>
+    <img class="imagen-banner" src="/colegio-1.webp" alt="imagen escuela alfalfares 1 | escuela de colonia alfalfares">
+    <img class="imagen-banner" src="/colegio-2.webp" alt="imagen escuela alfalfares 2 | escuela de colonia alfalfares">
+    <img class="imagen-banner" src="/colegio-3.webp" alt="imagen escuela alfalfares 3 | escuela de colonia alfalfares">
+</div>

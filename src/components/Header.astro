@@ -1,0 +1,72 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<header>
+	<nav>
+		<h2>
+			<a href="/">
+				<svg viewBox="0 0 64 64" aria-hidden="true" width="8" height="8">
+					<img src="/logo-colegio.png" alt="logo Escuela de Colonia Alfalfares | Escuela Alfalfares" width="64" height="64"> 
+				</svg>
+			</a>
+		</h2>
+		<div class="internal-links">
+			<HeaderLink href="/">Inicio</HeaderLink>
+			<HeaderLink href="/blog">Noticias</HeaderLink>
+			<HeaderLink href="/about">Nuestra Misión</HeaderLink>
+			<HeaderLink href="/contact">Contacto</HeaderLink>
+		</div>
+		<div class="social-links">
+			<a href="https://www.facebook.com/colonia.alfalfares.7" target="_blank">
+				<span class="sr-only">Facebook Oficial del la institución</span>
+				<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 24 24">
+					<path d="M 5 3 C 3.897 3 3 3.897 3 5 L 3 19 C 3 20.103 3.897 21 5 21 L 11.621094 21 L 14.414062 21 L 19 21 C 20.103 21 21 20.103 21 19 L 21 5 C 21 3.897 20.103 3 19 3 L 5 3 z M 5 5 L 19 5 L 19.001953 19 L 14.414062 19 L 14.414062 15.035156 L 16.779297 15.035156 L 17.130859 12.310547 L 14.429688 12.310547 L 14.429688 10.574219 C 14.429687 9.7862188 14.649297 9.2539062 15.779297 9.2539062 L 17.207031 9.2539062 L 17.207031 6.8222656 C 16.512031 6.7512656 15.814234 6.71675 15.115234 6.71875 C 13.041234 6.71875 11.621094 7.9845938 11.621094 10.308594 L 11.621094 12.314453 L 9.2773438 12.314453 L 9.2773438 15.039062 L 11.621094 15.039062 L 11.621094 19 L 5 19 L 5 5 z"></path>
+				</svg>
+			</a>
+		</div>
+	</nav>
+</header>
+
+<style>
+	header {
+		margin: 0;
+		padding: 0 1em;
+		background: white;
+		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+	}
+	h2 {
+		margin: 0;
+		font-size: 1em;
+	}
+
+	h2 a,
+	h2 a.active {
+		text-decoration: none;
+	}
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	nav a {
+		padding: 1em 0.5em;
+		color: var(--black);
+		border-bottom: 4px solid transparent;
+		text-decoration: none;
+	}
+	nav a.active {
+		text-decoration: none;
+		border-bottom-color: var(--accent);
+	}
+	.social-links,
+	.social-links a {
+		display: flex;
+	}
+	@media (max-width: 720px) {
+		.social-links {
+			display: none;
+		}
+	}
+</style>

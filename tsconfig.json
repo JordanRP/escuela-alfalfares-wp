@@ -1,5 +1,9 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "lib": ["es2020", "dom"], // <-- Añade o modifica esta línea
+    "baseUrl": ".", // A menudo útil para resoluciones de módulos, aunque no es el problema principal aquí
+  },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"]
 }

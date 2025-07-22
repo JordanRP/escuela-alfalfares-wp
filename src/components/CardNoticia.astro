@@ -1,0 +1,95 @@
+---
+// src/components/CardNoticia.astro
+import FormattedDate from './FormattedDate.astro'; 
+export interface Props {
+  title: string;
+  date: Date | null; // Acepta un objeto Date o null
+  description?: string;
+  slug: string; // Para construir el enlace al post completo
+  featureImage: string; // Opcional
+}
+
+const { title, date, description, slug, featureImage } = Astro.props;
+const postUrl = `/blog/${slug}/`; // Asumiendo que tus posts están en /blog/[slug]
+---
+
+<article class="card-noticia">
+  {featureImage && (
+    <a href={postUrl} aria-label={`Leer más sobre ${title}`}>
+      <img src={featureImage} alt="" class="card-noticia-imagen" loading="lazy" />
+    </a>
+  )}
+  <div class="card-noticia-contenido">
+    <h3 class="card-noticia-titulo"><a href={postUrl}>{title}</a></h3>
+    {date && (
+      <p class="card-noticia-fecha">
+        <FormattedDate date={date} /> {/* Aquí se usa tu componente FormattedDate */}
+      </p>
+    )}
+    {description && <p class="card-noticia-resumen">{description}</p>}
+    <a href={postUrl} class="card-noticia-enlace">Leer más →</a>
+  </div>
+</article>
+
+<style>
+  .card-noticia {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    background-color: #fff; /* Fondo para la card */
+  }
+  .card-noticia:hover{
+    cursor:pointer;
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+    transition-duration: 1000ms;
+    transform: scale(1.10, 1.10);
+  }
+  .card-noticia-imagen {
+    width: 100%;
+    height: 300px; /* Ajusta según necesites */
+    object-fit: cover;
+    display: block;
+  }
+  .card-noticia-contenido {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-noticia-titulo {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.25em;
+    line-height: 1.3;
+  }
+  .card-noticia-titulo a {
+    text-decoration: none;
+    color: #333;
+  }
+  .card-noticia-fecha {
+    font-size: 0.85em;
+    color: #666;
+    margin-bottom: 0.75em;
+  }
+  .card-noticia-resumen {
+    font-size: 0.95em;
+    color: #444;
+    flex-grow: 1;
+    margin-bottom: 1em;
+    line-height: 1.5;
+  }
+  .card-noticia-enlace {
+    display: inline-block;
+    text-decoration: none;
+    color: dodgerblue;
+    font-weight: bold;
+    margin-top: auto; /* Alinea al final si el contenido no llena */
+    align-self: flex-start; /* Para que no ocupe todo el ancho */
+  }
+  .card-noticia-enlace:hover {
+    text-decoration: underline;
+  }
+</style>
